@@ -1,0 +1,33 @@
+package adm.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import adm.vo.NoticeVO;
+import amd.config.BuildedSqlMapClient;
+
+public class NoticeDaoImpl implements INoticeDao {
+	
+	private SqlMapClient client;
+	private static NoticeDaoImpl dao;
+	
+	private NoticeDaoImpl() {
+		client = BuildedSqlMapClient.getSqlMapClient();
+	}
+	
+	public static INoticeDao getDao() {
+		if(dao == null) dao = new NoticeDaoImpl();
+		
+		return dao;
+	}
+	
+	@Override
+	public List<NoticeVO> insertNotice(NoticeVO vo) throws SQLException {
+		return (List<NoticeVO>)client.insert("notice.insertNotice", vo);
+	}
+
+
+
+}

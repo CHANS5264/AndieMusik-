@@ -1,0 +1,50 @@
+package adm.controller;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import adm.service.impl.NoticeServiceImpl;
+import adm.service.inter.INoticeService;
+import adm.vo.NoticeVO;
+
+
+@WebServlet("/NoticeWrite.do")
+public class NoticeWrite extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//공지사항 글 작성 servlet
+		request.setCharacterEncoding("utf-8");
+		
+		NoticeVO vo = new NoticeVO();
+		
+		try {
+			BeanUtils.populate(vo, request.getParameterMap());
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		vo.setAdmin_id("admin_2618");
+		
+		INoticeService service = NoticeServiceImpl.getService();
+		
+		service.insertNotice(vo);
+		
+		request.getRequestDispatcher("notice/notice_start.jsp").forward(request, response);
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

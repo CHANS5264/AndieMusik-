@@ -1,0 +1,45 @@
+package adm.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import adm.dao.inter.IPblDao;
+import adm.vo.PrfplcVO;
+import adm.vo.SeriesVO;
+import adm.vo.TeamVO;
+import amd.config.BuildedSqlMapClient;
+
+// 공연 정보 데이터 조작 dao클래스
+public class PblDaoImpl implements IPblDao{
+
+	private SqlMapClient smc = null;
+	private static PblDaoImpl dao = null;
+	
+	private PblDaoImpl() {
+		smc = BuildedSqlMapClient.getSqlMapClient();
+	}
+	
+	public static PblDaoImpl getInstance() {
+		if(dao == null) dao = new PblDaoImpl();
+		return dao;
+	}
+	
+	@Override
+	public List<PrfplcVO> prfList() throws SQLException {
+		return smc.queryForList("pblprfr.prfList");
+	}
+
+	@Override
+	public List<TeamVO> teamList() throws SQLException {
+		return smc.queryForList("pblprfr.teamList");
+	}
+
+	@Override
+	public List<SeriesVO> seriesList() throws SQLException {
+		return smc.queryForList("pblprfr.seiresList");
+	}
+	
+	
+}

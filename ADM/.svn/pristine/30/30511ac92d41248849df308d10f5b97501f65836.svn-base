@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMapConfig
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+	
+
+	
+<sqlMapConfig>
+	
+	 <properties resource="amd/config/dbinfo.properties"/>
+	 
+	
+	<settings useStatementNamespaces="true"/>
+	
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${user}"/>
+			<property name="JDBC.Password" value="${pass}"/>
+		</dataSource>
+	</transactionManager>
+	
+
+	<!--  <sqlMap resource="amd/mapping/aaa.xml"/>-->
+	<sqlMap resource="amd/mapping/pblprfr.xml"/>
+	<sqlMap resource="amd/mapping/notice.xml"/>
+	<sqlMap resource="amd/mapping/member.xml"/>
+	<sqlMap resource="amd/mapping/fboard.xml"/>
+	<sqlMap resource="amd/mapping/qna.xml"/>
+	<sqlMap resource="amd/mapping/ticketing.xml"/>
+	
+</sqlMapConfig>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+package adm.service.inter;
+
+import java.util.List;
+import java.util.Map;
+
+import adm.vo.MemberVO;
+
+public interface IMemberService {
+	
+	    //회원 정보를 insert하는 메서드
+		public String insertMember(MemberVO memVO);
+		
+		
+		//아이디 중복체크
+		public String idCheck(String memId);
+
+}

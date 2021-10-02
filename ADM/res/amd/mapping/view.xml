@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0/EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<!-- 이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+
+<sqlMap namespace="view">
+	<typeAlias alias="viewVO" type="adm.vo.ViewVO"/>
+	<select id="viewList" resultClass="viewVO" parameterClass="string">
+		select distinct a.pbl_code pbl_code, 
+		a.mem_id mem_id,  b.pbl_nm pbl_nm 
+		from advantk a inner join pblprfr b on a.pbl_code = b.pbl_code where mem_id = #mem_id#
+	</select>
+</sqlMap>

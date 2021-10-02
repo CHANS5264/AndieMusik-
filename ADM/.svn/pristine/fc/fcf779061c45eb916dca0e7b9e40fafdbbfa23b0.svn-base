@@ -1,0 +1,26 @@
+package adm.service.inter;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import adm.vo.PrfplcVO;
+import adm.vo.SeriesVO;
+import adm.vo.TeamVO;
+
+// 공연 정보 데이터 조작 Service 인터페이스
+public interface IPblService {
+	/**
+	 * 공연장 정보 얻어오는 메서드
+	 * @return 공연장 정보 VO List
+	 */
+	public List<PrfplcVO> prfList();
+	
+public List<TeamVO> teamList();
+	
+	/**
+	 * 리스트 정보를 얻어오는 메서드
+	 * @return 리스트 정보VO list
+	 * @throws SQLException
+	 */
+	public List<SeriesVO> seriesList();
+}

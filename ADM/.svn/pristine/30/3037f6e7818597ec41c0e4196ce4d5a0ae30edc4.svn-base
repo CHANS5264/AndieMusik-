@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0/EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- 이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<sqlMap namespace="member">
+	<typeAlias alias="memVO" type="adm.vo.MemberVO"/>
+	<!--회원 추가  -->
+	<insert id="insertMember" parameterClass="memVO">
+		insert into member (mem_id, mem_pass, mem_name, mem_addr1, 
+							mem_addr2, mem_addr3, mem_zip, mem_mail , mem_hp,  mem_bir)
+				values(#mem_id#, #mem_pass#, #mem_name#, #mem_addr1#, #mem_addr2#, #mem_addr3#, 
+				 #mem_zip#, #mem_mail#, #mem_hp#, #mem_bir#)		
+	</insert>
+	
+	<!--id중복검사 -->
+	<select id="idCheck" parameterClass="string" resultClass="string">
+		select mem_id from member where mem_id =#date#
+	</select>
+	
+	<!--로그인시 내가입력한 정보와 db에 저장된 정보를 비교-->
+	<select id="login" resultClass="memVO" parameterClass="map">
+		select * from member where mem_id=#mem_id# and mem_pass = #mem_pass#
+	</select>
+	
+	<!--아이디 찾기  -->
+	<select id="findId" resultClass="memVO" parameterClass="map">
+		select * from member where mem_name = #mem_name# and mem_mail = #mem_mail#
+	</select>
+	
+	<!--비밀번호 찾기  -->
+	<update id="findPass" parameterClass="memVO">
+		update member set mem_pass = #mem_pass# where mem_id=#mem_id#
+		and mem_mail = #mem_mail#
+	</update>
+</sqlMap>

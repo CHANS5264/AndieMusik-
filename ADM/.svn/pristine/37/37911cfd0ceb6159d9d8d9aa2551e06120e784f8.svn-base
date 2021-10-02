@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0/EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- 이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<sqlMap namespace="member">
+	<typeAlias alias="memVo" type="adm.vo.MemberVO"/>
+	<!--회원 추가  -->
+	<insert id="insertMember" parameterClass="memVo">
+		insert into member (mem_id, mem_pass, mem_name, mem_gender, 
+					mem_addr1, mem_addr2, mem_zip, mem_mail, mem_grade, mem_hp, mem_bir)
+				values(#mem_id#, #mem_pass#, #mem_name#, #mem_gender#, #mem_addr1#, #mem_addr2#, 
+				 #mem_zip#, #mem_mail#, #mem_grade#, #mem_hp#, #mem_bir#)		
+	</insert>
+	
+	<!--회원 삭제 -->
+	<delete id="deleteMember" parameterClass="string">
+		delete from member where mem_id = #mem_id#
+	</delete>
+	
+	<!--회원 정보 수정  -->
+	<!-- <update id="updateMember" parameterClass="memVo">
+		update member set mem_pass =
+	</update> -->
+	
+	<!--모든 회원 정보 리스트  -->
+	<select id="getAllMember" resultClass="memVo">
+		select * from member
+	</select>
+</sqlMap>

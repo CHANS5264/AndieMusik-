@@ -1,0 +1,84 @@
+package adm.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import adm.dao.impl.FboardDaoImpl;
+import adm.dao.impl.NoticeDaoImpl;
+import adm.dao.inter.IFboardDao;
+import adm.dao.inter.INoticeDao;
+import adm.service.inter.IFboardService;
+import adm.service.inter.INoticeService;
+import adm.vo.FboardVO;
+import adm.vo.NoticeVO;
+
+public class FboardServiceImpl implements IFboardService{
+	private IFboardDao dao;
+	private static FboardServiceImpl service = null;
+	
+	private FboardServiceImpl() {
+		dao = FboardDaoImpl.getDao();
+	}
+	
+	public static FboardServiceImpl getService() {
+		if(service == null) service = new FboardServiceImpl();
+		
+		return service;
+	}
+
+	@Override
+	public void insertFboard(FboardVO vo) {
+		
+		try {
+			dao.insertFboard(vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public List<FboardVO> fboardAllList(Map<String, Integer> map) {
+		List<FboardVO> fboVo = null;
+			try {
+				fboVo = dao.fboardAllList(map);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return fboVo;
+	}
+
+	@Override
+	public int fboardList() {
+		int count = 0;
+		
+		try {
+			count = dao.fboardList();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+		
+	}
+
+	@Override
+	public FboardVO selectDetail(int fcode) {
+		FboardVO vo = null;
+		
+		try {
+			vo = dao.selectDetail(fcode);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+		
+		
+	}
+	
+
+}

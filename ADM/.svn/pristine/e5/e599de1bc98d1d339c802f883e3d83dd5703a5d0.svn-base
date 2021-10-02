@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.pag1{
+	width : 80%;
+	margin-left : 45%;
+}
+.container{
+	width : 57%;
+	margin-top:5%;
+}
+th{
+	text-align : center;
+}
+.td_date{
+	 text-align : center;
+}
+.td_no{
+	 text-align : center;
+}
+
+#write{
+	margin-left : 70%;
+}
+

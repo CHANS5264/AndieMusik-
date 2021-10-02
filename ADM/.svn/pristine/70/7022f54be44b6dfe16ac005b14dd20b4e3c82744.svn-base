@@ -1,0 +1,22 @@
+package adm.service.inter;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import adm.vo.FboardVO;
+
+public interface IFboardService {
+	
+	//자유게시판 글 쓰기
+	public void insertFboard(FboardVO vo);		
+	
+	//
+	public List<FboardVO> fboardAllList (Map<String, Integer> map);
+	
+	//글 개수 가져오기
+	public int fboardList();
+	
+	//상세내용
+	public FboardVO selectDetail(int fcode);
+}

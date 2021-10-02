@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0/EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="ticketing">
+	<typeAlias alias="pblVo" type="adm.vo.PblprfrVO"/>
+	<typeAlias alias="seatVo" type="adm.vo.AvdSeatVO"/>
+	<typeAlias alias="advaVo" type="adm.vo.AdvantkVO"/>
+	
+	<select id="selectPblNm" parameterClass="string" resultClass="pblVo">
+		select * from pblprfr where pbl_date = #date#
+	</select>
+	
+	<select id="selectPbl" parameterClass="int" resultClass="pblVo">
+		select * from pblprfr where pbl_nm = #nm#
+	</select>
+	
+	<select id="selectSeat" parameterClass="int" resultClass="seatVo">
+	select a.seat_code as seatcode, nvl(b.adv_check,'n') as adccheck, nvl(b.pbl_code,0) as pblcode, a.pri_code as pricdoe, c.price as price
+		from seat a left outer join advantk b on a.seat_code = b.seat_code and b.pbl_code = #code#
+        inner join price c on a.pri_code = c.pri_code order by 1
+	</select>
+	
+	<insert id="insertAdv" parameterClass="advaVo">
+		insert into advantk values(adv_seq.nextval,#pbl_code#,#seat_code#,
+		#mem_id#,#prf_hall_code#,#adv_check#,to_date(sysdate,'yyyy.mm.dd hh24:mi'))
+	</insert>
+</sqlMap>

@@ -1,0 +1,102 @@
+package adm.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import adm.dao.inter.IMemberDao;
+import adm.vo.MemberVO;
+import amd.config.BuildedSqlMapClient;
+
+public class MemberDaoImpl implements IMemberDao{
+	private static MemberDaoImpl dao;
+	private SqlMapClient smc;
+	
+	private MemberDaoImpl() {
+		smc = BuildedSqlMapClient.getSqlMapClient();
+	}
+	public static MemberDaoImpl getInstance() {
+		if(dao == null) dao = new MemberDaoImpl();
+		
+		return dao;
+	}
+	
+	//회원 추가
+	@Override
+	public int insertMember(MemberVO memVo) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("", memVo);
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	
+	//회원 삭제
+	@Override
+	public int deleteMember(String memId) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("",memId);
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	
+	//회원 정보 수정
+	@Override
+	public int updateMember(MemberVO memVo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("", memVo);
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	//회원 리스트 가져오기
+	@Override
+	public List<MemberVO> getAllMember() {
+		List<MemberVO> memList = null;
+		try {
+			memList = smc.queryForList("");
+		} catch (SQLException e) {
+			memList = null;
+			e.printStackTrace();
+		}
+		return memList;
+	}
+	
+	//회원ID를 인수값으로 받아서 회원 정보의 개수를 반환하는 메서드
+	@Override
+	public int getMemberCount(String memId) {
+		int count = 0;
+		try {
+			count = (int) smc.queryForObject("", memId);
+		} catch (SQLException e) {
+			count = 0;
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	//Map을 이용해 회원 정보 중 원하는 컬럼을 수정하는 메서드
+	@Override
+	public int updateMember2(Map<String, String> paramMap) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("",paramMap);
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+}

@@ -1,0 +1,11 @@
+package adm.service.inter;
+
+import java.util.List;
+
+import adm.vo.NoticeVO;
+
+public interface INoticeService {
+	
+	public List<NoticeVO> insertNotice (NoticeVO vo);
+	
+}

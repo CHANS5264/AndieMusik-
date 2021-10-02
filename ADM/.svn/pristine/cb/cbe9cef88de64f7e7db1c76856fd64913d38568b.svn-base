@@ -1,0 +1,74 @@
+package adm.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import adm.dao.impl.MemberDaoImpl;
+import adm.dao.inter.IMemberDao;
+import adm.service.inter.IMemberService;
+import adm.vo.MemberVO;
+
+public class MemberServiceImpl implements IMemberService{
+	private IMemberDao dao;
+	private static MemberServiceImpl service;
+	
+	//생성자
+	private MemberServiceImpl() {
+		dao = MemberDaoImpl.getInstance();
+	}
+	
+	public static MemberServiceImpl getInstance() {
+		if(service == null) service = new MemberServiceImpl();
+		return service;
+	}
+	
+	//회원 추가
+	@Override
+	public String insertMember(MemberVO memVO) {
+		String input = null;
+		try {
+			input = dao.insertMember(memVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return input;
+	}
+	
+	
+	//아이디 중복 체크
+	@Override
+	public String idCheck(String memId) {
+		String idCheck = null;
+		try {
+			idCheck = dao.idCheck(memId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return idCheck;
+	}
+	
+	//로그인
+	@Override
+	public MemberVO login(Map<String, String> map) {
+		MemberVO memVO = null;
+		
+		try {
+			memVO = dao.login(map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return memVO;
+	}
+
+	@Override
+	public MemberVO findfindId(Map<String, String> map) {
+		MemberVO memVO = null;
+		
+		return memVO;
+	}
+
+
+
+
+}

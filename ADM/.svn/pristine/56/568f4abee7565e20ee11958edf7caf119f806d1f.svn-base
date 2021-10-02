@@ -1,0 +1,95 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+
+</script>
+<title>로그인</title>
+<script type="text/javascript">
+
+	$(function(){
+		$('#login').on('click',function(){
+			vid = $('#id').val()
+			vpass = $('#pass').val()
+			
+			 $.ajax({
+				 url : '/ADM/MemberLogin.do',
+				 type : 'post',
+				 data : {'id':vid, 'pass':vpass},
+				 success : function(res){
+					 if(res == "no"){
+						 alert("입력하신 정보가 틀렸습니다.")
+						 $('#id').val("");
+						 $('#pass').val("");
+					 }else{
+						 alert(vid + "님 환영합니다")
+						 location.href = "loginTest.jsp";
+					 }
+				 },
+				 error : function(xhr){
+					 alert("상태 : " + xhr.status)
+				 },
+				 dataType : 'json'
+			 })
+		})
+		
+	})
+</script>
+</head>
+<body>
+
+<div class="container">
+  <h2>예제</h2>
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+    로그인
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">로그인</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         <label>아이디 :</label>
+         <input type="text" id="id" name="mem_id">
+        </div>
+        <div>
+         <label>비밀번호 :</label>
+         <input type="password" id="pass" name="mem_pass">
+         </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        	<a href="findid.jsp">아이디 찾기</a>/
+        	<a href="">비밀번호 찾기</a>
+          <button id ="login" type="submit" class="btn-default" data-dismiss="modal">로그인</button>
+          <button type="button" class="btn-default" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+</body>
+</html>

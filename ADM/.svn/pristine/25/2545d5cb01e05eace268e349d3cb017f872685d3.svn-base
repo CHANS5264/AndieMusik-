@@ -1,0 +1,63 @@
+package adm.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import adm.dao.impl.MemberDaoImpl;
+import adm.dao.inter.IMemberDao;
+import adm.service.inter.IMemberService;
+import adm.vo.MemberVO;
+
+public class MemberServiceImpl implements IMemberService{
+	private IMemberDao dao;
+	private static MemberServiceImpl service;
+	
+	//생성자
+	private MemberServiceImpl() {
+		dao = MemberDaoImpl.getInstance();
+	}
+	
+	public static MemberServiceImpl getInstance() {
+		if(service == null) service = new MemberServiceImpl();
+		return service;
+	}
+	
+	//회원 추가
+	@Override
+	public int insertMember(MemberVO memVo) {
+		return dao.insertMember(memVo);
+	}
+	
+	//회원 삭제
+	@Override
+	public int deleteMember(String memId) {
+		return dao.deleteMember(memId);
+	}
+	
+	//회원 정보 수정
+	@Override
+	public int updateMember(MemberVO memVo) {
+		return dao.updateMember(memVo);
+	}
+	
+	//회원 목록 
+	@Override
+	public List<MemberVO> getAllMember() {
+		return dao.getAllMember();
+	}
+	
+	//회원ID를 인수값으로 받아서 회원 정보의 개수를 반환하는 메서드
+	@Override
+	public int getMemberCount(String memId) {
+		return dao.getMemberCount(memId);
+	}
+	
+	//Map을 이용해 회원 정보 중 원하는 컬럼을 수정하는 메서드
+	@Override
+	public int updateMember2(Map<String, String> paramMap) {
+		return dao.updateMember2(paramMap);
+	}
+
+
+
+}

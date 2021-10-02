@@ -1,0 +1,69 @@
+package adm.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import adm.service.impl.NoticeServiceImpl;
+import adm.service.inter.INoticeService;
+import adm.vo.NoticeVO;
+
+
+@WebServlet("/NoticeList.do")
+public class NoticeList extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json; charset=utf-8");
+		
+		INoticeService service = NoticeServiceImpl.getService();
+		
+		List<NoticeVO> list = service.noticeList();
+		
+		Gson gson = new Gson();
+		String jsonData = gson.toJson(list);
+		
+		PrintWriter out = response.getWriter();
+		
+		out.write(jsonData);
+		
+		out.flush();
+		out.close();
+		request.getRequestDispatcher("/notice/notice_1.jsp").forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

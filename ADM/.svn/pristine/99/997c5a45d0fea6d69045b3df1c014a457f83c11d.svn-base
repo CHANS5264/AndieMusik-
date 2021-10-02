@@ -1,0 +1,243 @@
+<%@page import="java.util.List"%>
+<%@page import="adm.vo.AvdSeatVO"%>
+<%@page import="jdk.internal.org.objectweb.asm.commons.AdviceAdapter"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#frame{
+		background: black;
+		width : 800px;
+		height: 750px;
+		
+		
+	}
+	#stageImg{
+		height: 30%;
+		width : 100%;
+	}
+	#stage{
+		width: 100%;
+		height: 100%;
+		 opacity : 0.7;
+	}
+	#seat{
+		height: 60%;
+		width : 100%;
+	}
+	#middlepad{
+		height: 6%;
+	}
+	table{
+		border : 1px solid red;
+		background: gray;
+		width : 100%;
+		height: 100%;
+	}
+	.seatNo{
+		color : white;
+		text-align: center;
+	}
+	#seat{
+		display: flex;
+		flex-direction: row;
+		
+	}
+	.padside{
+		width: 10%;
+	}
+	.seatTable{
+		width : 21%;
+	}
+	.seatTableMiddle{
+	width : 28%;
+	}
+	.padtop{
+		width : 5%
+	}
+	.seatNo:hover {
+		background: lightgray;
+	}
+	.non{
+		
+	 	background: lightgray;
+	}
+	#selectSeat{
+		width: 200px;
+		height: 200px;
+	}
+	#par{
+		display: flex;
+		flex-direction: row;
+	}
+	#selectSeat{
+		border : 1px solid black;
+		width: 20%;
+		margin-top: 250px;
+	}
+	.clicked{
+		background: red;
+	}
+</style>
+
+</head>
+<body>
+
+	<%  List<AvdSeatVO> list = (List<AvdSeatVO>)request.getAttribute("list"); 
+	%>
+	
+	
+	
+<script type="text/javascript">
+	selectSeat = new Array();
+	$(function(){
+		$('.seatNo').on('click',function(){
+			
+			select = $(this).text()
+			if(select == ""){
+				return;
+			}
+			
+			for(i = 0; i < selectSeat.length; i++){
+				if(selectSeat[i] == select+"<br>"){
+					selectSeat.splice(i,1);
+					$('#selectSeat').html(selectSeat);
+					
+					if($(this).css("background-color") == "rgb(223, 216, 216)"){
+						$(this).css("background", "gray");
+					}else{
+						$(this).css("background", "#DFD8D8");
+					}
+					
+					return;
+				}
+			}
+			
+			if(selectSeat.length > 3){
+				alert("4개까지 선택하실수 있습니다");
+				return;
+			}
+			if($(this).css("background-color") == "rgb(223, 216, 216)"){
+				$(this).css("background", "gray");
+			}else{
+				$(this).css("background", "#DFD8D8");
+			}
+			res = select + "<br>";
+			
+			selectSeat.push(res);
+			$('#selectSeat').html(selectSeat);
+		})
+		
+	})
+	
+</script>
+<jsp:include page="../include.jsp" flush="false"/>
+	
+<div id = "par">
+	<div id ="frame">
+		<div id = "stageImg">
+			<img id = "stage" src = "<%=request.getContextPath()%>/images/무대_캡쳐.PNG">
+		</div>
+		<div id = middlepad></div>
+		
+		<div id = "seat">
+		<div class = "padtop"></div>
+		<div class ="seatTable" >
+			<table border =1>
+		<%for(int i = 0; i < 10; i++){%>
+			<tr>
+			<% for(int j = 0; j <3; j++){
+				int num = 10*i + j;	
+					if(list.get(num).getAdccheck().equals("Y")){
+				%>
+					<td class = "non" ></td>
+				<%}else{
+				%>
+					<td class = "seatNo" idx = "<%=list.get(num).getPblcode()%>"><%=list.get(num).getSeatcode() %></td>
+				<%}%>
+			<%}%>
+			</tr>
+		<%}%>
+			</table>
+		</div>
+		<div class = "padside"></div>
+		
+			<div class ="seatTableMiddle" >
+			<table border =1>
+		<%for(int i = 0; i < 10; i++){%>
+			<tr>
+				<% for(int j = 3; j <7; j++){
+				int num = 10*i + j;	
+					if(list.get(num).getAdccheck().equals("Y")){
+				%>
+					<td class = "non"  ></td>
+				<%}else{
+				%>
+					<td class = "seatNo" idx = "<%=list.get(num).getPblcode()%>" ><%=list.get(num).getSeatcode() %></td>
+				<%}%>
+			<%}%>
+			</tr>
+		<%}%>
+			</table>
+		</div>
+		<div class = "padside"></div>
+		
+			<div class ="seatTable" >
+			<table border =1>
+		<%for(int i = 0; i < 10; i++){%>
+			<tr>
+				<% for(int j = 7; j <10; j++){
+				int num = 10*i + j;	
+					if(list.get(num).getAdccheck().equals("Y")){
+				%>
+					<td class = "non"></td>
+				<%}else{
+				%>
+					<td class = "seatNo" idx = "<%=list.get(num).getPblcode()%>"><%=list.get(num).getSeatcode() %></td>
+				<%}%>
+			<%}%>
+			</tr>
+		<%}%>
+			</table>
+		</div>
+		<div class = "padtop"></div>
+
+	
+		</div>
+	</div>
+	<div class = "padtop"></div>
+	<div id= "selectSeat">
+	
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

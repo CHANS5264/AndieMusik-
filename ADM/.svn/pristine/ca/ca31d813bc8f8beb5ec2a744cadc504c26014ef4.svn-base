@@ -1,0 +1,115 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script>
+$(function(){
+	$('form').on('submit', function(){
+		$('form').get(0).action = "/ADM/FindId.do";
+// 		vname = $('#name').val();
+// 		vmail = $('#mail').val();
+		
+// 		$.ajax({
+// 			url : '/ADM/FindId.do',
+// 			type : 'post',
+// 			data : {'name': vname, 'mail' : vmail},
+// 			success : function(res){
+// 				if(res == "no"){
+// 					alert("다시 확인해 주세요")
+// 					$('#name').val()
+// 					$('#mail').val()
+// 				}else{
+// 					location.href="findok.jsp";
+// 				}
+// 			},
+// 			error : function(xhr){
+// 				alert("상태 : " + xhr.status)
+// 			},
+// 			dataType : 'json'
+// 		})
+	})
+})
+</script>
+<title></title>
+</head>
+
+<body>
+<form name="findid" method="post">
+<table width="1330px"  border="0"  height="430px" align="center"   >
+   <tr>
+    <td>
+     <table width="450px" align="center"  border="0" style="color:black; background-color: #F6F6F6; font-size:20px; ">
+    <tr>
+    <td>
+     <table width="750px" align="center" border=0; style="background-color:white; margin-top:3%" >
+      <tr>
+       <td>아이디 찾기</td>
+       <td><div id="sub-title"> |  회원정보에 등록한 정보로 인증.</td>
+       <td style="width:300px"></td>
+      </tr>
+     </table>
+    </td> 
+    </tr>       
+   <tr> 
+    <td>
+   <table width="600px"  height="300px" align="center" border="0"  style=" background-color:none; border:dotted 5px none;">
+    <tr>
+     <td>
+     
+      <table width="400px"  border="0" style="margin-top:3%">
+       <tr>
+        <td><div id="middle-title">&nbsp;이름과 이메일을 입력해주세요.</div>
+        </td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <table width="380px" align="center" border="0" style="font-size:19px">
+       <tr>
+        <td>이름</td>
+        <td><input margin="10px" type="text" id="name" name="mem_name"></td>
+
+       </tr>
+
+       <tr>
+       	<td>이메일</td>
+       	<td><input type="text" id="mail" name="mem_mail"></td>
+        <td></td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <table width="150px"  align="center" border="0" style="margin-top:1%">
+       <tr>
+        <td>
+         <input type="submit" name="search" id="search" value="찾기" class="btn btn-primary">
+         <!--취소버튼 클릭시 메인으로 보낸다  -->
+         <input type="button" name="cancel" value="취소" class="btn btn-primary" onclick="location.href='login.jsp'"></td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+  </table>
+ </td>
+</tr>
+</table>
+</td>
+</table>
+</form>
+
+</body>
+</html>

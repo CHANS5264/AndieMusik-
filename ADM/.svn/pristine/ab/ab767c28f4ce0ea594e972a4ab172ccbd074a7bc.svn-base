@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0/EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- 이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!--  공연 정보 데이터 조작을 위한 xml -->
+<sqlMap namespace="pblprfr">
+	<!-- 공연정보 VO 클래스 -->
+	<typeAlias alias="pblprfrVo" type="adm.vo.PblprfrVO"/>
+	<!-- 공연장 VO 클래스 --> 
+	<typeAlias alias="prfVo" type="adm.vo.PrfplcVO"/>
+	<!-- 공연팀 VO 클래스 -->
+	<typeAlias alias="teamVo" type="adm.vo.TeamVO"/>
+	<!-- 시리즈 VO 클래스 -->
+	<typeAlias alias="seriesVo" type="adm.vo.SeriesVO"/>
+	
+	
+	<!-- 공연장 select SQL --> 
+	<select id="prfList" resultClass="prfVo">
+		select * from prfplc
+	</select>
+	
+	<!-- 공연 단체 select SQL -->
+	<select id="teamList" resultClass="teamVo">
+		select * from play_team
+	</select>
+	
+	<select id="seiresList" resultClass="seriesVo">
+		select * from series
+	</select>
+	
+	<!-- 시리즈 select SQL -->
+	
+	
+</sqlMap>

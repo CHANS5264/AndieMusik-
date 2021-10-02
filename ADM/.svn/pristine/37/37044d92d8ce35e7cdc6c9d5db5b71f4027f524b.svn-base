@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="반응형 사이트 따라하기">
+    <meta name="keywords" content="반응형사이트, 웹퍼블리셔, 웹접근성, HTML5, webstoryboy, webs">
+    <title>반응형 사이트 만들기</title>
+
+<!-- 부트스트랩, 제이쿼리, 뷰포트 가져오기 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+    <!-- style -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/liststyle.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+	
+
+
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+        <script src="js/html5shiv.min.js"></script>
+        <script type="text/javascript">
+            alert("현재 당신이 보는 브라우저는 지원하지 않습니다. 최신 브라우저로 업데이트해주세요!");
+        </script>
+    <![endif]-->
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header">
+                    <div class="header_menu">
+                        <a href="#">Blog</a>
+                        <a href="#">Github</a>
+                        <a href="#">Webstandard</a>
+                    </div>
+                    <!-- //header_menu -->
+                    <div class="header_tit">
+                        <h1>Professional Web Publishser</h1><br>
+                        <a href="http://webstoryboy.co.kr">webstoryboy.co.kr</a>
+                    </div>
+                    <!-- //header_tit -->
+                    <div class="header_icon">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-html5" aria-hidden="true"></i><span>HTML5</span></a></li>
+                            <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i><span>Github</span></a></li>
+                            <li><a href="#" class="facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i><span>Facebook</span></a></li>
+                            <li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span>twitter</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- //header_icon -->
+
+                    <!-- 
+                        https://developers.facebook.com/tools/debug/
+                        https://cards-dev.twitter.com/validator
+                    -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+
+ 
+
+
+
+    <main>
+      <section id="contents">
+            <div class="container">
+                <h2 class="ir_su">반응형 사이트 컨텐츠</h2>
+                <section id="cont_left">
+                    <h3 class="ir_su">반응형 사이트 왼쪽 컨텐츠</h3>
+                    <article class="column col1">
+                        <h4 class="col_tit">자유게시판</h4>
+                        <p class="col_desc"></p>
+                        <!-- 메뉴 -->
+                        <div class="menu">
+                            <ul>
+                                <li><a href="#">Cafe <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">Tutorial <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">WebSite <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">Reference <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">CSS3 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">HTML5 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- //메뉴 -->
+                    </article>
+                    <!-- //col1 -->
+                    
+                    
+                    
+                    
+<!--                     <article class="column col2"> -->
+<!--                         <h4 class="col_tit">Title</h4> -->
+<!--                         <p class="col_desc">임시 비활성화</p> -->
+<!--                         -->
+
+<!--                         // -->
+<!--                     </article> -->
+<!--                     //col -->
+<!--                     <article class="column col3"> -->
+<!--                         <h4 class="col_tit">Title</h4> -->
+<!--                         <p class="col_desc">이 곳은 설명 부분입니다.</p> -->
+<!--                         -->
+
+<!--                         // -->
+<!--                     </article> -->
+<!--                     //col3 -->
+
+
+
+                </section>
+                <section id="cont_center">
+                    <h3 class="ir_su">반응형 사이트 가운데 컨텐츠</h3>
+                    <article class="column col4">
+                        <h4 class="col_tit">공연후기</h4>
+                        <!-- -->
+                    </article>
+						
+                
+                
+                
+                
+                    <article class="column col5">
+
+                     	<img alt="dd" src="./img/1234.png">
+                    </article>
+                 
+                    <article class="column col6">
+                        <p>전체 페이지 | 103/1페이지</p>
+               		</article>
+              
+              
+              <!-- 게시판 시작 -->
+                <!-- 게시판 시작 -->
+                  <!-- 게시판 시작 -->
+                    <!-- 게시판 시작 -->
+              <div class="container">
+				<div class="row">
+					
+					<div class="col-sm-7" style="width: 815px;">
+<hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>NO</th>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Date</th>
+<!--         <th>조회수</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+      
+            <tr>	
+        <td>1</td>
+        <td>이것좀 봐주세요 이상해요 </td>
+        <td>펭귄123</td>
+        <td>2020-02-12</td>
+      </tr>
+
+    </tbody>
+    
+  </table>
+	</div>
+  </div>
+</div>
+
+
+<div class="text-center">
+		<ul class="pagination">
+			<li><a href="#">1</a></li>	
+			<li><a href="#">2</a></li>	
+			<li><a href="#">3</a></li>	
+			<li><a href="#">4</a></li>	
+			<li><a href="#">5</a></li>	
+		</ul>
+	</div>
+<br>
+
+<a class="btn btn-default pull-right">글쓰기</a>
+                </section>
+              <!-- 게시판 종료 -->
+              
+              
+<!--                 <section id="cont_right"> -->
+<!--                     <h3 class="ir_su">반응형 사이트 오른쪽 컨텐츠</h3> -->
+<!--                     <article class="column col7"> -->
+<!--                         <h4 class="col_tit">Title</h4> -->
+<!--                         <p class="col_desc">이 곳은 설명 부분입니다.</p> -->
+<!-- 					<div class="text-center"> -->
+<!-- 		<ul class="pagination"> -->
+<!-- 			<li><a href="http://webstoryboy.co.kr">1</a></li>	 -->
+<!-- 			<li><a href="http://webstoryboy.co.kr">2</a></li>	 -->
+<!-- 			<li><a href="http://webstoryboy.co.kr">3</a></li>	 -->
+<!-- 			<li><a href="http://webstoryboy.co.kr">4</a></li>	 -->
+<!-- 			<li><a href="http://webstoryboy.co.kr">5</a></li>	 -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
+
+<!--                     </article> -->
+<!--                     <article class="column col8"> -->
+<!--                         <h4 class="col_tit">Title</h4> -->
+<!--                         <p class="col_desc">이 곳은 설명 부분입니다.</p> -->
+
+<!--                     </article> -->
+<!--                     <article class="column col9"> -->
+<!--                         <h4 class="col_tit">Title</h4> -->
+<!--                         <p class="col_desc">이 곳은 설명 부분입니다.</p> -->
+
+<!--                     </article> -->
+<!--                 </section> -->
+            </div>
+        </section>
+    </main>
+    
+    
+  	<footer id="footer">
+
+		<!-- Section title -->
+		<h1 class="sr-only">Footer section</h1>
+		
+		<div class="container">
+	
+			<div class="row">
+
+				<div class="col-sm-6">
+					<small class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+
+				</div>
+
+				<div class="col-sm-6">
+					<ul class="social-list">
+						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+
+			</div>
+			
+		</div>
+
+	</footer>
+    <!-- //footer -->
+
+    <!-- JavaScript Libraries -->
+    <script src="js/modernizr-custom.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</body>
+</html>

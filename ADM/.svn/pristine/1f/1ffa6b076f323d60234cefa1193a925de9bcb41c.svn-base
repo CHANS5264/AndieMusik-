@@ -1,0 +1,25 @@
+package adm.dao.inter;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import adm.vo.NoticeVO;
+
+public interface INoticeDao {
+	//공지사항 입력
+	public void insertNotice (NoticeVO vo) throws SQLException;
+	
+	//공지사항 전체 글 가져오기
+	public List<NoticeVO> noticeList (Map<String, Integer> map) throws SQLException;
+	
+	//글 개수 가져오기
+	public int countList() throws SQLException;
+	
+	public NoticeVO selectDetail(int code) throws SQLException;
+	
+	public int updateNotice(NoticeVO vo) throws SQLException;
+	
+	public int updateNotice2(Map<String, Integer>map ) throws SQLException;
+	
+}

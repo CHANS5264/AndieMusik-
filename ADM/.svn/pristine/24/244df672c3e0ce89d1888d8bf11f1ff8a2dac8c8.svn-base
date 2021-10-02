@@ -1,0 +1,61 @@
+package adm.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import adm.dao.impl.NoticeDaoImpl;
+import adm.dao.inter.INoticeDao;
+import adm.service.inter.INoticeService;
+import adm.vo.NoticeVO;
+
+public class NoticeServiceImpl implements INoticeService {
+	private INoticeDao dao;
+	private static INoticeService service;
+	
+	private NoticeServiceImpl() {
+		dao = NoticeDaoImpl.getDao();
+	}
+	
+	public static INoticeService getService() {
+		if(service == null) service = new NoticeServiceImpl();
+		
+		return service;
+	}
+	
+	@Override
+	public void insertNotice(NoticeVO vo) {
+	
+		try {
+			dao.insertNotice(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public List<NoticeVO> noticeList(Map<String, Integer> map) {
+		List<NoticeVO> notiVo = null;
+		
+		try {
+			notiVo = dao.noticeList(map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return notiVo;
+	}
+
+	@Override
+	public int countList() {
+		int count = 0;
+		
+		try {
+			count = dao.countList();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+		}
+		return count;
+	}
+
+}

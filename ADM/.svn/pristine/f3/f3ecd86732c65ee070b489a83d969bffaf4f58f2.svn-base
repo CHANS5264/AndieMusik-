@@ -1,0 +1,29 @@
+package adm.vo;
+
+public class AvdSeatVO {
+
+	private String seatcode ;
+	private String adccheck ;
+	private int pblcode ;
+	
+	public int getPblcode() {
+		return pblcode;
+	}
+	public void setPblcode(int pblcode) {
+		this.pblcode = pblcode;
+	}
+	public String getSeatcode() {
+		return seatcode;
+	}
+	public void setSeatcode(String seatcode) {
+		this.seatcode = seatcode;
+	}
+	public String getAdccheck() {
+		return adccheck;
+	}
+	public void setAdccheck(String adccheck) {
+		this.adccheck = adccheck;
+	}
+	
+	
+}

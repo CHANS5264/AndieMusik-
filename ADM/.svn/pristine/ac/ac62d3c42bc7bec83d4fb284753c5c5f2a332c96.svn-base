@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0/EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="ticketing">
+	<typeAlias alias="pblVo" type="adm.vo.PblprfrVO"/>
+	<typeAlias alias="seatVo" type="adm.vo.AvdSeatVO"/>
+	
+	<select id="selectPblNm" parameterClass="string" resultClass="pblVo">
+		select * from pblprfr where pbl_date = #date#
+	</select>
+	
+	<select id="selectPbl" parameterClass="int" resultClass="pblVo">
+		select * from pblprfr where pbl_nm = #nm#
+	</select>
+	
+	<select id="selectSeat" parameterClass="int" resultClass="seatVo">
+		select a.seat_code as seatcode, nvl(b.adv_check,'n') as adccheck, nvl(b.pbl_code,0) as pblcode
+		from seat a left outer join advantk b on a.seat_code = b.seat_code and b.pbl_code = #code# order by 1
+	</select>
+</sqlMap>

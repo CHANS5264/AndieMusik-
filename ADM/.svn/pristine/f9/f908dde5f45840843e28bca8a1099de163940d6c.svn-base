@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="../css/notice.css">
+<script src="../js/notice_list.js"></script>
+<style>
+
+</style>
+<script>
+ currentPage = 1; //현재페이지
+ 
+ $(function(){
+	 
+	 readNotice(1);
+	 
+	 //페이지번호
+	 $("#pageList").on('click', '.nowPage', function(){
+		 currentPage = $(this).text().trim();
+		 
+		 readNotice(currentPage);
+		 
+	 })
+	 
+	 //이전버튼
+	 $("#pageList").on('click', '.before', function(){
+		 vnext = $('.nowPage').first().text().trim();
+		 currentPage = parseInt(vnext) - 1;
+		 readNotice(currentPage);
+		 
+	 })
+	 
+	 //다음버튼
+	 $("#pageList").on('click', '.next', function(){
+		 vnext = $('.nowPage').last().text().trim();
+		 currentPage = parseInt(vnext) + 1;
+		 
+		 readNotice(currentPage);
+		 
+	 })
+	 //공지사항 상세보기
+	 $('#list').on('click', '.tt', function(){
+		 vidx = $(this).attr('idx');
+		 //location.href = "NoticeDetail.do?notice_code=" + vidx;
+	 })
+	 
+	 $('#write').on('click', function(){
+		location.href = ('notice_write.html');
+	 })
+	 
+	 
+	 
+ })
+
+</script>
+
+</head>
+<body>
+
+<div id="list"></div>
+<div id="pageList"></div>
+<button type="button" class="btn btn-default" id="write">글쓰기</button>
+</body>
+</html>

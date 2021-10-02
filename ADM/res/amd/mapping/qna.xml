@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0/EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="qna">
+	<typeAlias alias="qnaVo" type="adm.vo.QnaVO"/>
+	<typeAlias alias="qnasVo" type="adm.vo.QnasVO"/>
+	
+	<!-- Q&A 전체 리스트 -->
+	<select id="qnaList" resultClass="qnaVo" parameterClass="map">
+		select A.* 
+		from (select rownum as rnum, B.*
+		  from (select * from qna order by qna_code desc) B
+        <![CDATA[
+        where rownum <= #end#) A 
+        where A.rnum >= #start#
+        ]]>
+	</select>
+	
+	<!-- Q&A 글 개수 -->
+	<select id="qnaCount" resultClass="int">
+		select count(*) from qna
+	</select>
+	
+	<!-- 댓글 개수 -->
+	<select id="qnasCount" resultClass="int">
+		select count(*) as recut from qnas where qna_code=#qna_code#
+	</select>
+	
+	<!-- Q&A 상세 -->
+	<select id="qnaDetail" parameterClass="int" resultClass="qnaVo">
+		select * from qna where qna_code=#qna_code#
+	</select>
+	
+	<insert id="qnaInsert" parameterClass="qnaVo">
+		insert into qna
+		values(qna_seq.nextval, #qna_title#, #qna_content#, sysdate, 0, #mem_id#)
+	</insert>
+	
+	<update id="qnaUpdate" parameterClass="qnaVo">
+		update qna set qna_title=#qna_title#, qna_content=#qna_content#
+		where qna_code = #qna_code#
+	</update>
+	
+	<!-- <update id="qnaUpdate2" parameterClass="map">
+		update qna
+		set $field$ = #data#
+		where qna_code = #qna_code#
+	</update> -->
+	
+	<update id="qnaCnt" parameterClass="int">
+		update qna set qna_cnt = qna_cnt + 1
+		where qna_code = #qna_code#
+	</update>
+	
+	
+	<delete id="qnaDelete" parameterClass="int">
+		delete from qna where qna_code=#qna_code#
+	</delete>
+	
+	<!-- 댓글 추가 -->
+	<insert id="qnaReplyInsert" parameterClass="qnasVo">
+		insert into qnas (qnas_code, admin_id, qnas_content, qnas_date, qna_code)
+		values(qnas_seq.nextval, #admin_id#, #qnas_content#, sysdate, #qna_code#)
+	
+		<selectKey keyProperty="qnas_code" resultClass="int">
+			select qnas_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<!-- 댓글 리스트 -->
+	<select id="qnaReplyList" resultClass="qnasVo" parameterClass="int">
+		select * from qnas where qna_code=#qna_code# order by qnas_date asc
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="qnaReplyUpdate" parameterClass="qnasVo">
+		update qnas set qnas_content=#qnas_content#,
+		qnas_date = sysdate where qnas_code=#qnas_code# 
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="qnaReplyDelete" parameterClass="int">
+		delete from qnas where qnas_code=#qnas_code# 
+	</delete>
+</sqlMap>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

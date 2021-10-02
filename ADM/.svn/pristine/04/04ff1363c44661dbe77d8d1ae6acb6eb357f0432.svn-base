@@ -1,0 +1,11 @@
+package adm.dao.inter;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import adm.vo.NoticeVO;
+
+public interface INoticeDao {
+	
+	public List<NoticeVO> insertNotice (NoticeVO vo) throws SQLException;
+}

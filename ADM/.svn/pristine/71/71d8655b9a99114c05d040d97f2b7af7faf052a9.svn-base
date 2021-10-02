@@ -1,0 +1,39 @@
+package adm.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import adm.service.impl.NoticeServiceImpl;
+import adm.service.inter.INoticeService;
+import adm.vo.NoticeVO;
+
+@WebServlet("/NoticeUpdate2.do")
+public class NoticeUpdate2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		int code = Integer.parseInt(request.getParameter("notice_code"));
+		
+		INoticeService service = NoticeServiceImpl.getService();
+		
+		NoticeVO vo = service.selectDetail(code);
+		
+		request.setAttribute("noticeVo", vo);
+		
+		request.getRequestDispatcher("notice/notice_update.jsp");
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,37 @@
+package adm.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import adm.dao.INoticeDao;
+import adm.dao.NoticeDaoImpl;
+import adm.vo.NoticeVO;
+
+public class NoticeServiceImpl implements INoticeService {
+	private INoticeDao dao;
+	private static INoticeService service;
+	
+	private NoticeServiceImpl() {
+		dao = NoticeDaoImpl.getDao();
+	}
+	
+	public static INoticeService getService() {
+		if(service == null) service = new NoticeServiceImpl();
+		
+		return service;
+	}
+	
+	@Override
+	public List<NoticeVO> insertNotice(NoticeVO vo) {
+		List<NoticeVO> list = null;
+		
+		try {
+			list = dao.insertNotice(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+}

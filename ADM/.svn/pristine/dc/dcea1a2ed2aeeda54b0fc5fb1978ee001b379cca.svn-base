@@ -1,0 +1,78 @@
+<%@page import="adm.vo.NoticeVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항 상세보기</title>
+<!-- 공지사항 상세보기 JSP -->
+<script type="text/javascript" src = "<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
+ <style>
+    .table {
+      border-collapse: collapse;
+      border-top: 1px solid gray;
+      width : 57%;
+    }  
+    .table th {
+      color: black;
+      background: white;
+      text-align: center;
+      width : 70px;
+      font-weight: normal;
+    }
+    .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .table th:first-child, .table td:first-child {
+      border-left: 0;
+    }
+    .table th:last-child, .table td:last-child {
+      border-right: 0;
+    }
+    .table tr td:first-child{
+      text-align: center;
+    }
+    .table caption{caption-side: bottom; display: none;}
+    
+    #cont{
+    	width : 57%;
+    }
+    #sub{
+    	margin-left : 25%;
+    	margin-top : 7%;
+    }
+    h2{
+    	font-weight: normal;
+    }
+  </style>
+
+</head>
+<%
+	NoticeVO vo = (NoticeVO)request.getAttribute("detail");
+%>
+<body>
+<div id="sub">
+<h2><%=vo.getNotice_title() %></h2>
+ <table class="table">
+    <tr><th>Name</th><td><%=vo.getAdmin_id() %></td></tr>
+    <tr><th>Date</th><td><%=vo.getNotice_date() %></td></tr>
+  <%
+  	if(vo.getFile_name() == null){
+  %>
+    <tr><th>File</th><td></td></tr>
+  <%
+  	}else{
+  %>
+  <tr><th>File</th><td><%=vo.getFile_name() %></td></tr>
+  <%
+  	}
+  %>
+  </table>    
+  <div id="cont">
+  <%=vo.getNotice_content() %>
+  </div>
+</div>
+</body>
+</html>

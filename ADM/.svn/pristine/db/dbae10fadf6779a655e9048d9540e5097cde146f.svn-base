@@ -1,0 +1,75 @@
+<%@page import="adm.vo.NoticeVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+</head>
+<%-- <%
+	List<NoticeVO> noList = (List<NoticeVO>)request.getAttribute("notiList");
+%> --%>
+<script>
+$(function(){
+	$.ajax({
+		url : "<%=request.getContextPath()%>/NoticeList.do",
+		type : 'post',
+		data : '',
+		success : function(data){
+			res = "<p>"
+			
+			$.each(data, function(i,v){
+				res += v.notice_code
+			})
+			res += "</p>"
+			/* $('.container').html(); */
+			$('#result').html(res)
+		},error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+	
+})
+</script>
+<body>
+
+<div class="container">
+  <h2>공지사항</h2>
+  <h4>An Die Musik 공지사항입니다.</h4>
+  <br><br>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <div id = "result"></div>
+<%-- <%
+	for(NoticeVO noVo : noList){	
+%>
+   
+      <tr>
+        <td><%=noVo.getNotice_code() %></td>
+        <td><%=noVo.getNotice_title() %></td>
+        <td><%=noVo.getNotice_date() %></td>
+      </tr>
+<% 
+	}
+%>   --%>    
+
+
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

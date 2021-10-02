@@ -1,0 +1,197 @@
+@charset "UTF-8";
+body{
+	
+	min-width: 1200px;
+}
+#frame{
+		background: black;
+		width : 54%;
+		height: 750px;
+		box-shadow: 0px 0px 20px 10px rgba(102, 186, 255, 0.4);
+		border-radius: 10px;
+		
+	}
+	#stageImg{
+		height: 30%;
+		width : 100%;
+		border-radius: 10px;
+	}
+	#stage{
+		width: 100%;
+		height: 100%;
+		 opacity : 0.7;
+	}
+	#info{
+ 		width: 15%;
+	}
+	#nav{
+		width : 17%;
+		margin : 1%;
+	}
+	.pad{
+		width : 3%
+	}
+	#seat{
+		height: 60%;
+		width : 100%;
+	}
+	#middlepad{
+		height: 6%;
+	}
+	table{
+		width : 100%;
+		height: 100%;
+		border-spacing: 4px;
+		border-collapse: separate;
+	}
+	.seatNo{
+		color : white;
+		text-align: center;
+	}
+	#seat{
+		display: flex;
+		flex-direction: row;
+		
+	}
+	.padside{
+		width: 10%;
+	}
+	.seatTable{
+		width : 21%;
+	}
+	.seatTableMiddle{
+	width : 28%;
+	}
+	.padtop{
+		width : 5%
+	}
+	.seatNo:hover {
+		background: lightgray;
+		cursor: pointer;
+	}
+	.seatNo{
+		background: gray;
+		border : 1px solid red;
+	}
+	.non{
+		
+	 	background: lightgray;
+	}
+	#selectSeat{
+		width: 200px;
+		height: 200px;
+	}
+	#par{
+		display: flex;
+		flex-direction: row;
+		margin-top: 50px;
+	}
+	#selectSeat{
+		border : 1px solid black;
+		width: 100%;
+		height : 6%;
+		text-align: center;
+		padding-left: 6%;
+		padding-top : 2%;
+		
+
+	}
+	#selectSeat span{
+		font-size: 20px;
+		font-weight: bold;
+		
+	}
+	
+	#seatInfo{
+		height: 9%;
+		width: 100%;
+		padding-top: 3px;
+	}
+	
+	#seatInfo table tr td{
+		text-align: center;
+		width : 23%;
+		font-weight: bold;
+	}
+	#infoTop{
+		height: 43%;
+		width: 100%;
+		border : 1px solid gray;
+		padding : 10px 15px 10px 15px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		border-radius: 10px;
+	}
+	#infoTop .perfImg{
+		width: 100%;
+		height: 100%;
+	}
+	#infobottom{
+		height: 20%;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	
+	#pri{
+		height: 6%;
+		width: 100%;
+		text-align: center;
+	}
+	#pri span{
+		font-size: 25px;
+		font-weight: bold;
+		letter-spacing: 2px;
+		
+	}
+	#button{
+		height: 6%;
+		width: 100%;
+	}
+	#selectSale{
+		height: 10%;
+		width: 100%;
+		margin-top : 5%;
+	}
+	
+	.clicked{
+		background: red;
+	}
+	.savebtn{
+		display: inline-block;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    vertical-align: middle;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 10px;
+	    user-select: none;
+	    width: 100%;
+	}
+	
+	.save{
+	    color: #333;
+    background-color: #EF3F43;
+    border-color: #ccc;
+    box-shadow: 2px 3px 2px 1px lightgray;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    	
+	}
+	#ticket:hover {
+		 box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+#perfdate h2{
+	
+	text-shadow : 1px 1px 1px lightgray;
+	text-align: center;
+}

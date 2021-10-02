@@ -1,0 +1,111 @@
+package adm.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import adm.dao.impl.NoticeDaoImpl;
+import adm.dao.inter.INoticeDao;
+import adm.service.inter.INoticeService;
+import adm.vo.NoticeVO;
+
+public class NoticeServiceImpl implements INoticeService {
+	private INoticeDao dao;
+	private static INoticeService service;
+	
+	private NoticeServiceImpl() {
+		dao = NoticeDaoImpl.getDao();
+	}
+	
+	public static INoticeService getService() {
+		if(service == null) service = new NoticeServiceImpl();
+		
+		return service;
+	}
+	
+	@Override
+	public void insertNotice(NoticeVO vo) {
+	
+		try {
+			dao.insertNotice(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public List<NoticeVO> noticeList(Map<String, Integer> map) {
+		List<NoticeVO> notiVo = null;
+		
+		try {
+			notiVo = dao.noticeList(map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return notiVo;
+	}
+
+	@Override
+	public int countList() {
+		int count = 0;
+		
+		try {
+			count = dao.countList();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+		}
+		return count;
+	}
+
+	@Override
+	public NoticeVO selectDetail(int code) {
+		NoticeVO vo = null;
+		
+		try {
+			vo = dao.selectDetail(code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
+	@Override
+	public int updateNotice(NoticeVO vo) {
+		int code = 0;
+		
+		try {
+			code = dao.updateNotice(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return code;
+	}
+
+	@Override
+	public int updateNotice2(Map<String, Integer> map) {
+		int cnt = 0;
+		
+		try {
+			cnt = dao.updateNotice2(map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int deleteNotice(int code) {
+		int cnt = 0;
+		
+		try {
+			cnt = dao.deleteNotice(code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+}

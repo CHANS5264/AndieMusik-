@@ -1,0 +1,86 @@
+@charset "UTF-8";
+body{
+		min-width: 800px;
+	}
+	div{
+		
+	}
+	#header{
+		display: flex;
+		flex-direction: row;
+		width : 80%
+	}
+	#nav{
+		width: 27%;
+	}
+	#perfdate{
+		height: 80px;
+		text-align: center;
+		padding-top: 15px;
+	}
+	
+	#nav .container{
+		width: 100%;
+	}
+	
+	#pad{
+		width:8%;
+	}
+	
+	#info{
+		width: 65%;
+	}
+	
+	
+	/* .top{
+		width : 70%;
+	} */
+	.par{
+		
+		display: flex;
+		flex-direction: row;
+		height: 300px;
+	}
+	.image{
+		width : 35%;
+	}
+	.nbsp{
+		width : 5%;
+	}
+	.content{
+		
+		width : 60%;
+	}
+	.foot{
+		height: 50px;
+		text-align: right;
+	}
+	.btn{
+		margin-top: 5px;
+	}
+	img{
+		width : 100%;
+		height: 100%;
+	}
+	.td1{
+		width : 30%;
+		height: 35px;
+		font-weight: bold;
+		font-size: 15px;
+	}
+	.td2{
+		width : 70%;
+		font-size: 15px;
+		
+	}
+	table{
+	width : 100%;
+		border-top: 2px solid gray; 
+	}
+	hr{
+		background-color : lightgray;
+		height: 2px;
+	}
+	h3{
+		font-weight: bold;
+	}

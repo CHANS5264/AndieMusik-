@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>회원가입</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+$(function(){
+		//중복 체크
+		$('#check').on('click', function(){
+			
+			$.ajax({
+				url : '/ADM/MemberController.do',
+				data : {'id' : $('#id').val()},
+				type : ''
+			})
+		})
+	})
+</script>
+</head>
+<body>
+
+<div class="container">
+  <h2>회원가입</h2>
+  
+  <form class="form-horizontal" onsubmit="return false">
+  
+  	<div class="form-group">
+      <label class="control-label col-sm-2" for="id">아이디</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="id" placeholder="Enter id" name="mem_id">
+      </div>
+      <button id="check"class="button btn-warning btn-sm" type="button">중복검사</button>
+        <span class="sp"></span>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name">이름</label>
+        <span class="sp"></span>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="mem_name">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="bir">생년월일</label>
+        <span class="sp"></span>
+      <div class="col-sm-3">
+        <input type="date" class="form-control" id="bir" placeholder="Enter bir" name="mem_bir">
+    </div>
+      </div>
+      
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">비밀번호</label>
+        <span class="sp"></span>
+      <div class="col-sm-3">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mem_pass">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">비밀번호 확인</label>
+        <span class="sp"></span>
+      <div class="col-sm-3">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mem_pass">
+        
+      </div>
+    </div>
+  	
+  	<div class="form-group">
+      <label class="control-label col-sm-2" for="hp">휴대폰번호</label>
+		<button id="check"class="button btn-warning btn-sm" type="button">중복검사</button>
+        <span class="sp"></span>
+        <span class="sp"></span>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="hp" placeholder="Enter hp" name="mem_hp">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">이메일</label>
+        <span class="sp"></span>
+      <div class="col-sm-3">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="mem_mail">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="zip">우편번호</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="zip" placeholder="Enter zip" name="mem_zip">
+      </div>
+        <button id="search" class="button btn-warning btn-sm" type="button">번호검색</button>
+        <button data-toggle="modalbtn" data-target="#myModal" class="button btn-warning btn-sm" type="button">modal번호</button>
+      
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="add1">주소</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="addr1" placeholder="Enter add1" name="mem_add1">
+      </div>
+     </div>
+      
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="add2">상세주소</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="addr2" placeholder="Enter add2" name="mem_add2">
+      </div>
+    </div>
+  	
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        <span id="joinspan"></span>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">우편번호 찾기</h4>
+      </div>
+   <div class="modal-body">
+     <p>찾고자 하는 동을 입력하세요</p>
+     	<input type="text" id="dong">
+    	<input type="button" value="검색" id="btncode">
+	<br><br>
+   <div id="result"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+</html>

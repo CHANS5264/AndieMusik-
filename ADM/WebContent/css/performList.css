@@ -1,0 +1,105 @@
+@charset "UTF-8";
+body{
+		min-width: 1200px;
+	}
+	div{
+		
+	}
+	#headers{
+		display: flex;
+		flex-direction: row;
+		width : 80%;
+		background: white;
+	}
+	#nav{
+		width: 27%;
+		border : 1px solid black;
+		
+	}
+	
+	#perfdate{
+		height: 80px;
+		text-align: center;
+		padding-top: 15px;
+	}
+	
+	#nav .container{
+		width: 100%;
+	}
+	
+	#pad{
+		width:8%;
+	}
+	
+	#info{
+		width: 65%;
+	}
+	
+	
+	/* .top{
+		width : 70%;
+	} */
+	.par{
+		
+		display: flex;
+		flex-direction: row;
+		height: 300px;
+	}
+	.image{
+		width : 35%;
+	}
+	.nbsp{
+		width : 5%;
+	}
+	.content{
+		
+		width : 60%;
+	}
+	.foot{
+		height: 50px;
+		text-align: right;
+	}
+	.btn{
+		margin-top: 5px;
+	}
+	.perfImg{
+		width : 100%;
+		height: 100%;
+	}
+	.td1{
+		width : 30%;
+		height: 35px;
+		font-weight: bold;
+		font-size: 15px;
+	}
+	.td2{
+		width : 70%;
+		font-size: 15px;
+		
+	}
+	table{
+	width : 100%;
+		border-top: 2px solid gray; 
+	}
+	hr{
+		background-color : lightgray;
+		height: 2px;
+	}
+	h3{
+		font-weight: bold;
+	}
+
+	.btn-default{
+		box-shadow: 1px 1px 1px 1px lightgray;
+	}
+	
+	.list-group{
+		box-shadow: 1px 1px 1px 1px lightgray;
+		border-radius: 10px;
+	}
+	
+	.content h3{
+		text-shadow: 1px 1px 1px lightgray;
+		font-weight: 600;
+		text-align: center;
+	}
